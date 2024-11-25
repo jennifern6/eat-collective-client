@@ -1,8 +1,8 @@
 import "./App.scss";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Register from "./pages/Register/Register";
-import Home from "./pages/Home";
-import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home.jsx";
+import Login from "./pages/Login/Login.jsx";
 import Single from "./pages/Single";
 import Write from "./pages/Write";
 import Navbar from "./components/Navbar/Navbar";

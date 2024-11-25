@@ -1,0 +1,87 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+
+
+.posts {
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .post {
+      display: flex;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+      }
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      &__image-container {
+        @include center-flex;
+        overflow: hidden;
+        // flex: 2;
+        position: relative;
+        
+  
+        .post__image {
+          width: 90%;
+          height: auto;
+          display: block;
+          text-align: center;
+          margin-top: 1rem;
+        }
+      }
+  
+      &__content {
+        padding: 16px;
+  
+        .post__link {
+          text-decoration: none;
+          color: #333;
+  
+          &:hover {
+            color:$link;
+          }
+  
+          .post__title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            line-height: 1.2;
+          }
+        }
+  
+        .post__description {
+          font-size: 1rem;
+          color: $link;
+          margin-bottom: 16px;
+        }
+  
+        .post__button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          padding: 10px 20px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
