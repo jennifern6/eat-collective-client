@@ -1,10 +1,11 @@
 import React from "react";
+import "./Login.scss"
 
 function Login() {
   return (
-    <div classNamw="auth">
+    <div className="auth">
       <h1>Login</h1>
-      <form>
+      <form className="auth__form">
         <input type="text" placeholder="username" />
         <input type="password" placeholder="password" />
         <button>Login</button>

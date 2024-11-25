@@ -1,8 +1,9 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
-  .auth {
-    @include center-flex;
-    background-color: grey;
-    height: 100vh;
-  }
-  
-  
+.auth {
+  height: 100vh;
+  @include center-flex;
+  flex-direction: column;
+  background-color: $bluegreen;
+}

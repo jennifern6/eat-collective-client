@@ -2,14 +2,13 @@
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/fonts" as *;
 @use "../src/styles/partials/global" as *;
+// @include global-styles;
 
-@include global-styles;
+// .app {
+//   display: flex;
+//   justify-content: center;
 
-.app {
-  display: flex;
-  justify-content: center;
-
-  .container {
-    width: 1024px;
-  }
-}
+//   .container {
+//     width: 1024px;
+//   }
+// }
