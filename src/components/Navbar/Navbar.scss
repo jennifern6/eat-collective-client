@@ -2,9 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .navbar {
-    background-color: #f8f9fa;
+   
     padding: 1rem; 
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+    // box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
 
     &__container {
         @include center-flex;

@@ -1,0 +1,26 @@
+
+@use "./fonts" as*;
+@use "./variables" as *;
+@use "./mixins" as*;
+
+@mixin global-styles {
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    //   overflow-x: hidden;
+    //   overflow-y: hidden;
+    }
+  
+    a {
+      text-decoration: none;
+    }
+
+
+body {
+    font-family: 'IBM Plex Mono';
+    color: $primary;
+    line-height: 1.6; 
+    padding: 1.25rem; 
+  }
+}
