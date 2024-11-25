@@ -1,0 +1,16 @@
+// @use "./fonts" as*;
+// @use "./variables" as *;
+
+
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
