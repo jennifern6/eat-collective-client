@@ -3,14 +3,22 @@
 
 
 @mixin desktop {
-  @media (min-width: 1280px) {
-    @content;
-  }
+    @media (min-width: 1280px) {
+        @content;
+    }
 }
 
 @mixin center-flex {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
+}
+
+
+
+@mixin center-flex-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
