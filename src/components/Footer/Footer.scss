@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+    padding: 1rem;
+    text-align: center;
+
+    &__container {
+        @include center-flex;
+        gap: .5rem;
+    }
+
+    .footer__logo {
+        width: 1.5rem;
+        height: auto;
+    }
+
+    &__text {
+        font-size: 14px;
+        color: $link;
+
+    }
+}

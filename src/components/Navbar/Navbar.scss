@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.navbar {
+    background-color: #f8f9fa;
+    padding: 1rem; 
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+
+    &__container {
+        @include center-flex;
+        justify-content: space-between;
+    }
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+
+        .navbar__logo {
+            width: 6.25rem; 
+            height: auto;
+        }
+    }
+
+    // Links Section
+    &__links {
+        display: flex;
+        gap: 1.5rem; 
+
+        .link {
+            text-decoration: none;
+            color: $link;
+
+            &:hover {
+                color: grey;
+            }
+
+            h6 {
+                margin: 0;
+                font-weight: 500;
+            }
+        }
+    }
+}

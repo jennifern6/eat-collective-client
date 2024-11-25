@@ -4,11 +4,16 @@
 @use "../src/styles/partials/global" as *;
 // @include global-styles;
 
-// .app {
-//   display: flex;
-//   justify-content: center;
+.app {
+  display: flex;
+  justify-content: center;
 
-//   .container {
-//     width: 1024px;
-//   }
-// }
+  .link {
+    text-decoration: none;
+  }
+
+  .container {
+    width: 1024px;
+
+  }
+}
