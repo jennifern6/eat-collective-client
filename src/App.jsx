@@ -1,12 +1,12 @@
 import "./App.scss";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Register from "./pages/Register/Register";
+import Register from "./pages/Register/Register.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
-import Single from "./pages/Single";
-import Write from "./pages/Write";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+import Single from "./pages/Single/Single.jsx";
+import Write from "./pages/Write/Write.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 const Layout = () => {
   return (
