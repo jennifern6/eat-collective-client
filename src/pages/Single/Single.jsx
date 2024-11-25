@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Ensure Link is uncommented for routing.
+import { Link } from "react-router-dom"; 
 import "./Single.scss";
 import Edit from "../../assets/images/edit.png";
 import Delete from "../../assets/images/delete.png";
+import Menu from "../../components/Menu/Menu.jsx"; 
 
 const Single = () => {
   return (
@@ -39,9 +40,7 @@ const Single = () => {
             </Link>
           </div>
         </div>
-        <h1 className="single__text">
-          Title
-        </h1>
+        <h1 className="single__text">Title</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit,
           commodi atque! Quibusdam laudantium officia architecto minima
@@ -49,9 +48,11 @@ const Single = () => {
           Accusamus ad unde molestiae reiciendis similique?
         </p>
       </div>
-
-      {/* Menu Section */}
-      <div className="single__menu">menu</div>
+      
+      <div className="single__menu">
+             {/* Menu Section */}
+             <Menu />
+      </div>
     </div>
   );
 };
