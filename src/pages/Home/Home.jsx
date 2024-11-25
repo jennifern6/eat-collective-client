@@ -37,9 +37,11 @@ const Home = () => {
       <div className="posts__container">
         {posts.map((post) => (
           <div className="post" key={post.id}>
+
             <div className="post__image-container">
               <img className="post__image" src={post.img} alt={post.title} />
             </div>
+
             <div className="post__content">
               <Link className="post__link" to={`/post/${post.id}`}>
                 <h1 className="post__title">{post.title}</h1>
@@ -47,6 +49,7 @@ const Home = () => {
               <p className="post__description">{post.desc}</p>
               <button className="post__button">Read More</button>
             </div>
+            
           </div>
         ))}
       </div>
