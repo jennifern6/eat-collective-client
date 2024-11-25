@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
@@ -34,9 +34,9 @@ const Home = () => {
 
   return (
     <div className="posts">
-      <div className="post__container">
+      <div className="posts__container">
         {posts.map((post) => (
-          <div className="post__card" key={post.id}>
+          <div className="post" key={post.id}>
             <div className="post__image-container">
               <img className="post__image" src={post.img} alt={post.title} />
             </div>
@@ -52,6 +52,7 @@ const Home = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Home;
