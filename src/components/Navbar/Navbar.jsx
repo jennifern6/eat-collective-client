@@ -15,22 +15,22 @@ function Navbar() {
 
         <div className="navbar__links">
           <Link className="Food" to="/?cat=food">
-            Link
+            Food
           </Link>
           <Link className="Travel" to="/?cat=travel">
-            Link
+            Travel
           </Link>
           <Link className="Wellness" to="/?cat=wellness">
-            Link
+            Wellness
           </Link>
           <Link className="Art" to="/?cat=art">
-            Link
+            Art
           </Link>
           <Link className="Technology" to="/?cat=technology">
-            Link
+            Technology
           </Link>
           <Link className="Entertainment" to="/?cat=entertainment">
-            Link
+            Entertainment
           </Link>
           <span>Jen</span>
           <span>Logout</span>
