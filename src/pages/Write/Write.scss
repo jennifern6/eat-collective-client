@@ -1,6 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
- 
+
 
 
 
@@ -40,9 +40,10 @@
 
 .write {
     &__item {
-      @include card-style;
-      @include flex-column;
-      padding: .625rem;
+        @include card-style;
+        @include flex-column;
+        padding: .625rem;
     }
-  }
-  
+
+}
+

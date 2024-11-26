@@ -20,7 +20,7 @@
 
   body {
     font-family: 'IBM Plex Mono', monospace;
-    color: $primary;
+    color: $link;
     line-height: 1.6;
     padding: 1.25rem;
   }
@@ -41,7 +41,7 @@
     font-size: 1.2rem;
   }
 
-  p, {
+  p {
     font-size: 1rem;
   }
 }
