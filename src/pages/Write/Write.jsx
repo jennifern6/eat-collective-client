@@ -18,7 +18,20 @@ import "./Write.scss"
             </div>
           </div>
           <div className="write__menu">
-            <div className="write__item">item1</div>
+            <div className="write__item">
+              <h1>Publish</h1>
+              <span>
+                <b>Status:</b> Draft
+              </span>
+
+              <span>
+                <b>Visibility:</b> Public
+              </span>
+              <input type="file" id="file" name=""/>
+              <label htmlFor="file">Upload Image
+
+              </label>
+            </div>
             <div className="write__item">item2</div>
           </div>
         </div>
