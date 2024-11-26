@@ -14,28 +14,28 @@ function Navbar() {
         </div>
 
         <div className="navbar__links">
-          <Link className="link" to="/?cat=food">
+          <Link className="Food" to="/?cat=food">
             Link
           </Link>
-          <Link className="link" to="/?cat=travel">
+          <Link className="Travel" to="/?cat=travel">
             Link
           </Link>
-          <Link className="link" to="/?cat=wellness">
+          <Link className="Wellness" to="/?cat=wellness">
             Link
           </Link>
-          <Link className="link" to="/?cat=art">
+          <Link className="Art" to="/?cat=art">
             Link
           </Link>
-          <Link className="link" to="/?cat=technology">
+          <Link className="Technology" to="/?cat=technology">
             Link
           </Link>
-          <Link className="link" to="/?cat=entertainment">
+          <Link className="Entertainment" to="/?cat=entertainment">
             Link
           </Link>
           <span>Jen</span>
           <span>Logout</span>
           <span>
-            <Link className="link" to="/write">
+            <Link className="Write" to="/write">
               Write
             </Link>
           </span>
