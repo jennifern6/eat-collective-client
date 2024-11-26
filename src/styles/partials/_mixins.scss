@@ -1,11 +1,17 @@
-// @use "./fonts" as*;
-// @use "./variables" as *;
+@use "./fonts" as*;
+@use "./variables" as *;
 
 
 @mixin desktop {
     @media (min-width: 1280px) {
         @content;
     }
+}
+
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
 }
 
 @mixin center-flex {
@@ -22,3 +28,13 @@
     justify-content: center;
     flex-direction: column;
 }
+
+//styling for card components
+@mixin card-style {
+    border: 1px solid $border-colour;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  

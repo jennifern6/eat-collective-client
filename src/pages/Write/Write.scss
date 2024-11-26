@@ -2,19 +2,47 @@
 @use "../../styles/partials/mixins" as *;
  
 
+
+
 .write {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     display: flex;
     gap: 1.25rem;
 
     &__content {
-        flex: 5
+        flex: 5;
+        @include flex-column;
+        gap: 1.25rem;
+
+        input {
+            padding: .625rem;
+        }
+
+        .editorContainer {
+            height: 18.75rem;
+            overflow: auto;
+
+            .editor {
+                height: 80%;
+                border: none;
+            }
+        }
     }
 
     &__menu {
         flex: 2;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         gap: 1.25rem;
+
+
     }
 }
+
+.write {
+    &__item {
+      @include card-style;
+      @include flex-column;
+      padding: .625rem;
+    }
+  }
+  

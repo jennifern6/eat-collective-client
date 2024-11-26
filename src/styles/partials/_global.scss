@@ -1,26 +1,47 @@
-
-@use "./fonts" as*;
+@use "./fonts" as *;
 @use "./variables" as *;
-@use "./mixins" as*;
+@use "./mixins" as *;
 
+// Global mixin for reusable styles
+@mixin global-reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+// Apply global styles
 @mixin global-styles {
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    //   overflow-x: hidden;
-    //   overflow-y: hidden;
-    }
-  
-    a {
-      text-decoration: none;
-    }
 
-
-body {
-    font-family: 'IBM Plex Mono';
+  body {
+    font-family: 'IBM Plex Mono', monospace;
     color: $primary;
-    line-height: 1.6; 
-    padding: 1.25rem; 
+    line-height: 1.6;
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p, {
+    font-size: 1rem;
   }
 }

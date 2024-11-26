@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
@@ -14,22 +14,22 @@ function Navbar() {
         </div>
 
         <div className="navbar__links">
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=food">
             Link
           </Link>
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=travel">
             Link
           </Link>
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=wellness">
             Link
           </Link>
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=art">
             Link
           </Link>
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=technology">
             Link
           </Link>
-          <Link className="link" to="/?cat=link">
+          <Link className="link" to="/?cat=entertainment">
             Link
           </Link>
           <span>Jen</span>
