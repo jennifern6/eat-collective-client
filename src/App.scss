@@ -2,7 +2,9 @@
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/fonts" as *;
 @use "../src/styles/partials/global" as *;
+
 @include global-styles;
+@include global-reset;
 
 .app {
   display: flex;
@@ -16,4 +18,8 @@
     width: 1024px;
 
   }
+}
+
+button {
+  @include button-style
 }
