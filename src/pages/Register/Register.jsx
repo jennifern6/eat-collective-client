@@ -2,6 +2,8 @@
 import {Link} from 'react-router-dom';
 import "./Register.scss"
 import { useState } from 'react';
+import axios from 'axios';
+
 
 const Register = () => {
 
@@ -15,7 +17,10 @@ const Register = () => {
     setInputs(prev=>({...prev, [e.target.name]: e.target.value}))
   }
 
-  console.log(inputs)
+  const handleSubmit = async e => {
+    e.preventDefault ()
+    const res = await axios.post("")
+  }
 
   return (
     <div className="auth">
@@ -24,7 +29,7 @@ const Register = () => {
         <input required type="text" placeholder="username" name="username" onChange={handleChange} />
         <input required type="email" placeholder="email" name="emaile" onChange={handleChange} />
         <input required type="password" placeholder="password" name="password" onChange={handleChange} />
-        <button>Register</button>
+        <button onClick={handleSubmit}>Register</button>
         <p>This is an error!</p>
         <span>Do you have an account? <Link to="/login">Login</Link>
         </span>
