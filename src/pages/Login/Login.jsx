@@ -2,7 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import "./Login.scss"
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../auth/authContext.jsx';
+import { AuthContext } from "../../context/authContext.jsx";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -36,9 +36,20 @@ const Login = () => {
     <div className="auth">
       <h1>Login</h1>
       <form className="auth__form">
-        <input required type="text" placeholder="username" name="username" onChange={handleChange} />
+        <input 
+        required 
+        type="text" 
+        placeholder="username" 
+        name="username" 
+        onChange={handleChange} />
        
-        <input required type="password" placeholder="password" name="password" onChange={handleChange} />
+        <input 
+        required 
+        type="password" 
+        placeholder="password" 
+        name="password" 
+        onChange={handleChange} />
+        
         <button onClick={handleSubmit}>Login</button>
         {err && <p>{err}</p>}
         <span>
