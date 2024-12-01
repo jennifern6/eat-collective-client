@@ -20,10 +20,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
+    
+      await axios.post("http://localhost:8800/api/auth/register", inputs, {
+        withCredentials: true,
+      });
       navigate("/login");
     } catch (err) {
-      setError(err.response.data);
+
+      setError(err.response?.data || "An unexpected error occurred");
     }
   };
 
