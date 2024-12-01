@@ -9,12 +9,12 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("http://localhost:8800/api/auth/login", inputs);
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, inputs);
     setCurrentUser(res.data);
   };
 
   const logout = async (inputs) => {
-    await axios.post("http://localhost:8800/api/auth/logout");
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/logout`);
     setCurrentUser(null);
   };
 
