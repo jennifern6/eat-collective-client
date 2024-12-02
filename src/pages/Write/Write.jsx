@@ -96,7 +96,7 @@ const Write = () => {
             className="editor"
             theme="snow"
             value={value}
-            onChange={handleQuillChange} // Use the updated handler here
+            onChange={setValue} 
           />
         </div>
       </div>
