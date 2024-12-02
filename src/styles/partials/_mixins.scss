@@ -2,12 +2,12 @@
 @use "./variables" as *;
 
 
-@mixin desktop {
-    @media (min-width: 1280px) {
-        @content;
-    }
-}
 
+  @mixin desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
 
 @mixin flex-column {
     display: flex;
