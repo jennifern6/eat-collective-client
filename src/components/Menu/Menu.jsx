@@ -2,13 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Menu.scss";
 
-const Menu = ({cat}) => {
+const Menu = ({ cat }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/?cat=${cat}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/posts/?cat=${cat}`
+        );
         setPosts(res.data);
       } catch (err) {
         console.log(err);

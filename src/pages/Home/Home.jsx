@@ -9,9 +9,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/posts${cat}`
-        );
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts${cat}`);
         const posts = res.data.map((post) => {
           if (post.img) {
             try {
@@ -43,11 +41,7 @@ const Home = () => {
         {posts.map((post) => (
           <div className="post" key={post.id}>
             <div className="post__image-container">
-              <img
-                className="post__image"
-                src={`../upload/${post?.img}`}
-                alt={post.title}
-              />
+              <img className="post__image" src={`../upload/${post?.img}`} alt={post.title} />
             </div>
             <div className="post__content">
               <Link className="post__link" to={`/post/${post.id}`}>

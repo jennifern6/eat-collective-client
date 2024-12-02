@@ -2,9 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 
-
 .menu {
-//   font-family: $font-family;
   text-align: center;
   padding: 20px;
 
@@ -12,7 +10,7 @@
     font-size: 1rem;
     margin-bottom: 12px;
   }
-  
+
   &__post {
     margin: 20px 0;
     padding: 16px;

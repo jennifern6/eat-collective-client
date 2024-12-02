@@ -2,8 +2,8 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-// Global mixin for reusable styles
 @mixin global-reset {
+
   *,
   *::before,
   *::after {
@@ -15,12 +15,11 @@
     color: inherit;
 
     &:visited {
-      color: $button; 
+      color: $button;
     }
   }
 }
 
-// Apply global styles
 @mixin global-styles {
 
   body {

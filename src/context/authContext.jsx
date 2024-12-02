@@ -7,15 +7,17 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-  const [loading, setLoading] = useState(true); // Loading state to manage initialization
+  const [loading, setLoading] = useState(true); 
 
   const login = async (inputs) => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, inputs);
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        inputs
+      );
       setCurrentUser(res.data);
     } catch (error) {
       console.error("Login failed:", error);
-      // Handle login error, e.g., show an error message
     }
   };
 
@@ -25,7 +27,6 @@ export const AuthContextProvider = ({ children }) => {
       setCurrentUser(null);
     } catch (error) {
       console.error("Logout failed:", error);
-      // Handle logout error, if necessary
     }
   };
 
@@ -33,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
     if (currentUser !== null) {
       localStorage.setItem("user", JSON.stringify(currentUser));
     } else {
-      localStorage.removeItem("user"); // Remove the user data when logging out
+      localStorage.removeItem("user"); 
     }
     setLoading(false);
   }, [currentUser]);

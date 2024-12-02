@@ -2,9 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .navbar {
-   
-    padding: 1rem; 
-    // box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+
+    padding: 1rem;
 
     &__container {
         @include center-flex;
@@ -16,15 +15,14 @@
         align-items: center;
 
         .navbar__logo {
-            width: 6.25rem; 
+            width: 6.25rem;
             height: auto;
         }
     }
 
-    // Links Section
     &__links {
         display: flex;
-        gap: 1.5rem; 
+        gap: 1.5rem;
 
         .link {
             text-decoration: none;
