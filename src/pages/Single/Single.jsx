@@ -1,57 +1,98 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
+import { useEffect, useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Single.scss";
 import Edit from "../../assets/images/edit.png";
 import Delete from "../../assets/images/delete.png";
-import Menu from "../../components/Menu/Menu.jsx"; 
+import Menu from "../../components/Menu/Menu.jsx";
+import { AuthContext } from "../../context/authContext.jsx";
+import moment from "moment";
+import axios from "axios";
 
 const Single = () => {
+  const [post, setPost] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
+
+  const postId = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/posts/${postId}`
+        );
+        setPost(res.data);
+      } catch (err) {
+        console.error("Error fetching post:", err);
+      }
+    };
+    fetchData();
+  }, [postId]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/posts/${postId}`);
+      navigate("/");
+    } catch (err) {
+      console.error("Error deleting post:", err);
+    }
+  };
+
+  if (!post) {
+    return <p>Loading...</p>; // Display loading state while fetching data
+  }
+
   return (
     <div className="single">
       {/* Content Section */}
       <div className="single__content">
-        <p>Content</p>
-        <img
-          className="single__content-image"
-          src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Content"
-        />
+        {post.img && (
+          <img
+            className="single__content-image"
+            src={`${post.img}`}
+            alt="Content"
+          />
+        )}
+
         <div className="single__user-container">
           <div className="single__user">
-            <img
-              className="single__user-image"
-              src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="User"
-            />
+            {post.userImg && (
+              <img
+                className="single__user-image"
+                src={post.userImg}
+                alt={`${post.username}'s avatar`}
+              />
+            )}
           </div>
 
           <div className="single__info">
-            <span>Jen</span>
-            <p>Posted 2 days ago</p>
+            <span>{post.username}</span>
+            <p>Posted {moment(post.date).fromNow()}</p>
           </div>
 
-          <div className="single__edit">
-            <Link to={`/write?edit=2`}>
-              <img className="single__logo" src={Edit} alt="Edit Logo" />
-            </Link>
-
-            <Link to={`/delete`}>
-              <img className="single__logo" src={Delete} alt="Delete Logo" />
-            </Link>
-          </div>
+          {currentUser.username === post.username && (
+            <div className="single__edit">
+              <Link to={`/write?edit=2`} state={post}>
+                <img className="single__logo" src={Edit} alt="Edit Logo" />
+              </Link>
+              <img
+                className="single__logo"
+                onClick={handleDelete}
+                src={Delete}
+                alt="Delete Logo"
+              />
+            </div>
+          )}
         </div>
-        <h1 className="single__text">Title</h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit,
-          commodi atque! Quibusdam laudantium officia architecto minima
-          explicabo blanditiis nobis labore, itaque omnis sequi praesentium.
-          Accusamus ad unde molestiae reiciendis similique?
-        </p>
+
+        <h1 className="single__text">{post.title}</h1>
+        <p className="single__description">{post.desc}</p>
       </div>
-      
+
+      {/* Menu Section */}
       <div className="single__menu">
-             {/* Menu Section */}
-             <Menu />
+        <Menu cat={post.cat} />
       </div>
     </div>
   );
