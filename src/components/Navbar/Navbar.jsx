@@ -23,19 +23,14 @@ const Navbar = () => {
           <Link className="Travel" to="/?cat=travel">
             Travel
           </Link>
-          <Link className="Wellness" to="/?cat=wellness">
-            Wellness
-          </Link>
+       
           <Link className="Art" to="/?cat=art">
             Art
           </Link>
           <Link className="Technology" to="/?cat=technology">
             Technology
           </Link>
-          <Link className="Entertainment" to="/?cat=entertainment">
-            Entertainment
-          </Link>
-
+         
 
           <span>{currentUser?.username}</span>
           {currentUser ? (
