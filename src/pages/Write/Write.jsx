@@ -5,70 +5,78 @@ import "./Write.scss";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
+import DOMPurify from "dompurify";
 
 const Write = () => {
   const state = useLocation().state;
-  const [value, setValue] = useState(state?.desc || "");
-  const [title, setTitle] = useState(state?.title || "");
+  const [value, setValue] = useState(state?.title || "");
+  const [title, setTitle] = useState(state?.desc || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
-
   const navigate = useNavigate();
 
-  const upload = async () => {
+  const uploadImage = async () => {
+    if (!file) return "";
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/upload`, formData, {
-        withCredentials: true, 
-      });
-      return res.data;
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/upload`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      return data;
     } catch (err) {
-      console.log(err);
+      console.error("Image upload failed:", err);
+      return "";
     }
   };
 
-  const handleClick = async (e) => {
+  const handlePublish = async (e) => {
     e.preventDefault();
-    const imgUrl = await upload();
-
     try {
-      const config = {
-        withCredentials: true,
+      const sanitizedDesc = DOMPurify.sanitize(value);
+      const imgUrl = await uploadImage();
+      const config = { withCredentials: true };
+      const date = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
+
+      const postData = {
+        title,
+        desc: sanitizedDesc,
+        cat,
+        img: file ? imgUrl : "",
+        date: !state ? date : undefined,
       };
 
       if (state) {
-     
-        await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/${state.id}`, {
-          title,
-          desc: value,
-          cat,
-          img: file ? imgUrl : "",
-        }, config);
+        await axios.put(
+          `${import.meta.env.VITE_API_URL}/api/posts/${state.id}`,
+          postData,
+          config
+        );
       } else {
-
-        await axios.post(`${import.meta.env.VITE_API_URL}/api/posts/`, {
-          title,
-          desc: value,
-          cat,
-          img: file ? imgUrl : "",
-          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-        }, config);
+        await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/posts/`,
+          postData,
+          config
+        );
       }
       navigate("/");
     } catch (err) {
-      console.log(err);
+      console.error("Failed to save post:", err);
     }
   };
 
   return (
     <div className="write">
       <div className="write__content">
-        <input 
-          type="text" 
-          placeholder="Title" 
+        <input
+          type="text"
+          placeholder="Title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)} 
+          onChange={(e) => setTitle(e.target.value)}
         />
         <div className="editorContainer">
           <ReactQuill
@@ -96,10 +104,12 @@ const Write = () => {
             id="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
-          <label htmlFor="file" className="upload-label">Upload Image</label>
+          <label htmlFor="file" className="upload-label">
+            Upload Image
+          </label>
           <div className="write__buttons">
             <button className="write__button">Save as Draft</button>
-            <button onClick={handleClick} className="write__button-publish">
+            <button onClick={handlePublish} className="write__button-publish">
               Publish
             </button>
           </div>
@@ -108,23 +118,57 @@ const Write = () => {
         {/* Category Section */}
         <div className="write__item">
           <h1>Category</h1>
-          {["food", "travel", "art", "technology"].map((category) => (
-            <div className="write__item-container" key={category}>
-              <input
-                type="radio"
-                name="cat"
-                value={category}
-                id={category}
-                checked={cat === category}
-                onChange={(e) => setCat(e.target.value)}
-              />
-              <label htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
-            </div>
-          ))}
+
+          <div className="write__item-container">
+            <input 
+            type="radio" 
+            checked={cat === "food"}
+            name="cat" 
+            value="food" 
+            id="food" 
+            onChange={(e) => setCat(e.target.value)}
+            />
+            <label htmlFor="food">Food</label>
+          </div>
+
+          <div className="write__item-container">
+            <input 
+            type="radio" 
+            checked={cat === "travel"}
+            name="cat" 
+            value="travel" 
+            id="travel" 
+            onChange={(e) => setCat(e.target.value)}
+            />
+            <label htmlFor="travel">Travel</label>
+          </div>
+
+          <div className="write__item-container">
+            <input 
+            type="radio" 
+            checked={cat === "art"}
+            name="cat" 
+            value="art" 
+            id="art"
+            onChange={(e) => setCat(e.target.value)}
+            />
+            <label htmlFor="art">Art</label>
+          </div>
+
+          <div className="write__item-container">
+            <input 
+            type="radio" 
+            checked={cat === "technology"}
+            name="cat" 
+            value="technology" 
+            id="technology" 
+            onChange={(e) => setCat(e.target.value)}
+            />
+            <label htmlFor="technology">Technology</label>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default Write;
