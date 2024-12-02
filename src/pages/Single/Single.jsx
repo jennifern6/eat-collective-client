@@ -41,58 +41,53 @@ const Single = () => {
   };
 
   if (!post) {
-    return <p>Loading...</p>; // Display loading state while fetching data
+    return <p>Loading...</p>; 
   }
-
 
   return (
     <div className="single">
       {/* Content Section */}
       <div className="single__content">
-        {post.img && (
-          <img
-            className="single__content-image"
-            src={`${post.img}`}
-            alt="Content"
-          />
-        )}
+        <img
+          className="single__content-image"
+          src={`../upload/${post?.img}`}
+          alt="content"
+        />
 
         <div className="single__user-container">
           <div className="single__user">
             {post.userImg && (
-              <img
-                className="single__user-image"
-                src={post.userImg}
-                alt={`${post.username}'s avatar`}
-              />
+              <img src={post.userImg} alt={`${post.username}'s avatar`} />
+            )}
+
+            <div className="single__info">
+              <span>{post.username}</span>
+              <p>Posted {moment(post.date).fromNow()}</p>
+            </div>
+
+            {currentUser.username === post.username && (
+              <div className="single__edit">
+                <Link to={`/write?edit=2`} state={post}>
+                  <img className="single__logo" src={Edit} alt="Edit Logo" />
+                </Link>
+                <img
+                  className="single__logo"
+                  onClick={handleDelete}
+                  src={Delete}
+                  alt="Delete Logo"
+                />
+              </div>
             )}
           </div>
 
-          <div className="single__info">
-            <span>{post.username}</span>
-            <p>Posted {moment(post.date).fromNow()}</p>
-          </div>
-
-          {currentUser.username === post.username && (
-            <div className="single__edit">
-              <Link to={`/write?edit=2`} state={post}>
-                <img className="single__logo" src={Edit} alt="Edit Logo" />
-              </Link>
-              <img
-                className="single__logo"
-                onClick={handleDelete}
-                src={Delete}
-                alt="Delete Logo"
-              />
-            </div>
-          )}
+          <h1 className="single__text">{post.title}</h1>
+          <p
+            className="single__description"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(post.desc),
+            }}
+          ></p>
         </div>
-
-        <h1 className="single__text">{post.title}</h1>
-        <p className="single__description" dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize>(post.desc),
-          }}
-        ></p>
       </div>
 
       {/* Menu Section */}
