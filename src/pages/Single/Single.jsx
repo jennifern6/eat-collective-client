@@ -7,6 +7,7 @@ import Menu from "../../components/Menu/Menu.jsx";
 import { AuthContext } from "../../context/authContext.jsx";
 import moment from "moment";
 import axios from "axios";
+import DOMPurify from "dompurify";
 
 const Single = () => {
   const [post, setPost] = useState(null);
@@ -41,6 +42,11 @@ const Single = () => {
 
   if (!post) {
     return <p>Loading...</p>; // Display loading state while fetching data
+  }
+
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
   }
 
   return (
@@ -87,7 +93,10 @@ const Single = () => {
         </div>
 
         <h1 className="single__text">{post.title}</h1>
-        <p className="single__description">{post.desc}</p>
+        <p className="single__description" dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize>(post.desc),
+          }}
+        ></p>
       </div>
 
       {/* Menu Section */}

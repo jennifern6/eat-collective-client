@@ -20,7 +20,7 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/upload`, formData, {
-        withCredentials: true, // Ensure cookies are sent with this request
+        withCredentials: true, 
       });
       return res.data;
     } catch (err) {
@@ -34,11 +34,11 @@ const Write = () => {
 
     try {
       const config = {
-        withCredentials: true, // Ensure cookies are sent with this request
+        withCredentials: true,
       };
 
       if (state) {
-        // Update existing post
+     
         await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/${state.id}`, {
           title,
           desc: value,
@@ -46,7 +46,7 @@ const Write = () => {
           img: file ? imgUrl : "",
         }, config);
       } else {
-        // Create a new post
+
         await axios.post(`${import.meta.env.VITE_API_URL}/api/posts/`, {
           title,
           desc: value,
