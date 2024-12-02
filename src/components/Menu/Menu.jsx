@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Menu.scss";
-// import { Link } from "react-router-dom";
 
 const Menu = ({cat}) => {
   const [posts, setPosts] = useState([]);

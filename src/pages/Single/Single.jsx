@@ -44,10 +44,6 @@ const Single = () => {
     return <p>Loading...</p>; // Display loading state while fetching data
   }
 
-  const getText = (html) =>{
-    const doc = new DOMParser().parseFromString(html, "text/html")
-    return doc.body.textContent
-  }
 
   return (
     <div className="single">

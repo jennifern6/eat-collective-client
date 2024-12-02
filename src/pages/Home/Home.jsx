@@ -20,6 +20,13 @@ const Home = () => {
     fetchData();
   }, [cat]);
 
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
+
+
   return (
     <div className="posts">
       <div className="posts__container">
@@ -34,7 +41,7 @@ const Home = () => {
               <Link className="post__link" to={`/post/${post.id}`}>
                 <h1 className="post__title">{post.title}</h1>
               </Link>
-              <p className="post__description">{post.desc}</p>
+              <p className="post__description">{getText(post.desc)}</p>
               <button className="post__button">Read More</button>
             </div>
             
