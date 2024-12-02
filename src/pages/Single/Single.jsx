@@ -23,6 +23,15 @@ const Single = () => {
         const res = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/posts/${postId}`
         );
+        if (res.data.img) {
+          try {
+            // Parse the JSON string to extract the filename
+            const imgObj = JSON.parse(res.data.img);
+            res.data.img = imgObj.filename; // Set the filename for use
+          } catch (e) {
+            console.error("Error parsing image JSON:", e);
+          }
+        }
         setPost(res.data);
       } catch (err) {
         console.error("Error fetching post:", err);
@@ -41,7 +50,7 @@ const Single = () => {
   };
 
   if (!post) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>;
   }
 
   return (
