@@ -1,0 +1,76 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+
+
+.write {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 1.25rem;
+
+    &__content {
+        flex: 5;
+        @include flex-column;
+        gap: 1.25rem;
+
+        input {
+            padding: .625rem;
+        }
+
+        .editorContainer {
+            height: 18.75rem;
+            overflow: auto;
+
+            .editor {
+                height: 80%;
+                border: none;
+            }
+        }
+    }
+
+    &__menu {
+        flex: 2;
+        @include flex-column;
+        gap: 1.25rem;
+
+
+    }
+}
+
+.write {
+    &__item {
+      @include card-style;
+      @include flex-column;
+      padding: 0.625rem;
+    }
+  
+    &__item-container {
+      @include center-flex-align;
+    }
+  
+    &__buttons {
+      display: flex;
+      
+    }
+  
+    &__button {
+      white-space: nowrap;
+      margin-right: 1rem;
+    }
+  
+    &__button-publish {
+      background-color: $button;
+  
+      &:hover {
+        background-color: $link; 
+      }
+    }
+  }
+  
+
+input[type="radio"] {
+    accent-color: $link; 
+  }
+  
+

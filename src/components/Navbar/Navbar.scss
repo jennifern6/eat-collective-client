@@ -1,0 +1,41 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.navbar {
+
+    padding: 1rem;
+
+    &__container {
+        @include center-flex;
+        justify-content: space-between;
+    }
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+
+        .navbar__logo {
+            width: 6.25rem;
+            height: auto;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 1.5rem;
+
+        .link {
+            text-decoration: none;
+            color: $link;
+
+            &:hover {
+                color: grey;
+            }
+
+            h6 {
+                margin: 0;
+                font-weight: 500;
+            }
+        }
+    }
+}

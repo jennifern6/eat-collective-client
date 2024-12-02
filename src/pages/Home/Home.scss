@@ -1,0 +1,77 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+
+
+.posts {
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .post {
+      display: flex;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+      }
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      &__image-container {
+        @include center-flex;
+        overflow: hidden;
+        position: relative;
+        
+  
+        .post__image {
+          max-width: 37.5rem;
+          width: 90%;
+          height: auto;
+          display: block;
+          text-align: center;
+          margin-top: 1rem;
+        }
+      }
+  
+      &__content {
+        padding: 16px;
+  
+        .post__link {
+          text-decoration: none;
+          color: #333;
+  
+          &:hover {
+            color:$link;
+          }
+  
+          .post__title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            line-height: 1.2;
+          }
+        }
+  
+        .post__description {
+          font-size: 1rem;
+          color: $link;
+          margin-bottom: 16px;
+        }
+  
+        .post__button {
+         @include button-style
+        }
+      }
+    }
+  }

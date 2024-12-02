@@ -1,0 +1,51 @@
+@use "./fonts" as *;
+@use "./variables" as *;
+@use "./mixins" as *;
+
+@mixin global-reset {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:visited {
+      color: $button;
+    }
+  }
+}
+
+@mixin global-styles {
+
+  body {
+    font-family: 'IBM Plex Mono', monospace;
+    color: $link;
+    line-height: 1.6;
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

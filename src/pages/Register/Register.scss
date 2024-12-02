@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+
+.auth {
+  height: 50vh;
+  @include center-flex-column;
+  background-color: $bluegreen;
+
+  &__form{
+    @include center-flex-column;
+  }
+}
