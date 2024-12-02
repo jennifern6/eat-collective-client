@@ -15,6 +15,19 @@ const Write = () => {
   const [cat, setCat] = useState(state?.cat || "");
   const navigate = useNavigate();
 
+  // Function to extract plain text from HTML
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "";
+  };
+
+  // Handle changes to the editor content
+  const handleQuillChange = (newValue) => {
+    setValue(newValue);
+    // Extract and set plain text as the title
+    setTitle(getText(newValue));
+  };
+
   const uploadImage = async () => {
     if (!file) return "";
     try {
@@ -83,7 +96,7 @@ const Write = () => {
             className="editor"
             theme="snow"
             value={value}
-            onChange={setValue}
+            onChange={handleQuillChange} // Use the updated handler here
           />
         </div>
       </div>
@@ -118,51 +131,50 @@ const Write = () => {
         {/* Category Section */}
         <div className="write__item">
           <h1>Category</h1>
-
           <div className="write__item-container">
-            <input 
-            type="radio" 
-            checked={cat === "food"}
-            name="cat" 
-            value="food" 
-            id="food" 
-            onChange={(e) => setCat(e.target.value)}
+            <input
+              type="radio"
+              checked={cat === "food"}
+              name="cat"
+              value="food"
+              id="food"
+              onChange={(e) => setCat(e.target.value)}
             />
             <label htmlFor="food">Food</label>
           </div>
 
           <div className="write__item-container">
-            <input 
-            type="radio" 
-            checked={cat === "travel"}
-            name="cat" 
-            value="travel" 
-            id="travel" 
-            onChange={(e) => setCat(e.target.value)}
+            <input
+              type="radio"
+              checked={cat === "travel"}
+              name="cat"
+              value="travel"
+              id="travel"
+              onChange={(e) => setCat(e.target.value)}
             />
             <label htmlFor="travel">Travel</label>
           </div>
 
           <div className="write__item-container">
-            <input 
-            type="radio" 
-            checked={cat === "art"}
-            name="cat" 
-            value="art" 
-            id="art"
-            onChange={(e) => setCat(e.target.value)}
+            <input
+              type="radio"
+              checked={cat === "art"}
+              name="cat"
+              value="art"
+              id="art"
+              onChange={(e) => setCat(e.target.value)}
             />
             <label htmlFor="art">Art</label>
           </div>
 
           <div className="write__item-container">
-            <input 
-            type="radio" 
-            checked={cat === "technology"}
-            name="cat" 
-            value="technology" 
-            id="technology" 
-            onChange={(e) => setCat(e.target.value)}
+            <input
+              type="radio"
+              checked={cat === "technology"}
+              name="cat"
+              value="technology"
+              id="technology"
+              onChange={(e) => setCat(e.target.value)}
             />
             <label htmlFor="technology">Technology</label>
           </div>
@@ -171,4 +183,5 @@ const Write = () => {
     </div>
   );
 };
+
 export default Write;

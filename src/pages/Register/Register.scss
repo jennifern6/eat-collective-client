@@ -1,6 +1,9 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+
+
+
 .auth {
   height: 100vh;
   @include center-flex-column;

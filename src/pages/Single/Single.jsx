@@ -11,6 +11,7 @@ import DOMPurify from "dompurify";
 
 const Single = () => {
   const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true); // Added loading state
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -33,8 +34,10 @@ const Single = () => {
           }
         }
         setPost(res.data);
+        setLoading(false); // Set loading to false once data is fetched
       } catch (err) {
         console.error("Error fetching post:", err);
+        setLoading(false);
       }
     };
     fetchData();
@@ -49,8 +52,12 @@ const Single = () => {
     }
   };
 
+  if (loading) {
+    return <p>Loading...</p>; // Display loading message while fetching data
+  }
+
   if (!post) {
-    return <p>Loading...</p>;
+    return <p>Post not found.</p>; // Display message if post is not found
   }
 
   return (
@@ -74,7 +81,7 @@ const Single = () => {
               <p>Posted {moment(post.date).fromNow()}</p>
             </div>
 
-            {currentUser.username === post.username && (
+            {currentUser && currentUser.username === post.username && (
               <div className="single__edit">
                 <Link to={`/write?edit=2`} state={post}>
                   <img className="single__logo" src={Edit} alt="Edit Logo" />
