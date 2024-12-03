@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 
 export const AuthContext = createContext();
 
@@ -7,7 +8,7 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const login = async (inputs) => {
     try {
@@ -34,7 +35,7 @@ export const AuthContextProvider = ({ children }) => {
     if (currentUser !== null) {
       localStorage.setItem("user", JSON.stringify(currentUser));
     } else {
-      localStorage.removeItem("user"); 
+      localStorage.removeItem("user");
     }
     setLoading(false);
   }, [currentUser]);
@@ -44,4 +45,9 @@ export const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+// Add prop types for the component
+AuthContextProvider.propTypes = {
+  children: PropTypes.node.isRequired, // Ensures children are a valid React node and required
 };

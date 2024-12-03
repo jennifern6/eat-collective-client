@@ -15,18 +15,7 @@ const Write = () => {
   const [cat, setCat] = useState(state?.cat || "");
   const navigate = useNavigate();
 
-  // Function to extract plain text from HTML
-  const getText = (html) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  };
 
-  // Handle changes to the editor content
-  const handleQuillChange = (newValue) => {
-    setValue(newValue);
-    // Extract and set plain text as the title
-    setTitle(getText(newValue));
-  };
 
   const uploadImage = async () => {
     if (!file) return "";
@@ -96,7 +85,7 @@ const Write = () => {
             className="editor"
             theme="snow"
             value={value}
-            onChange={handleQuillChange} // Use the updated handler here
+            onChange={setValue} 
           />
         </div>
       </div>
