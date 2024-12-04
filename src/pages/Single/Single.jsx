@@ -95,7 +95,8 @@ const Single = () => {
 
             {/* Name and Date */}
             <div className="single__info">
-              <span>{post?.username || "Unknown User"}</span>
+              <span><b>{post?.username || "Unknown User"}</b></span>
+              &nbsp;
               <p>Posted {moment(post?.date).fromNow()}</p>
             </div>
           </div>
