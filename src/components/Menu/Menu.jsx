@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; 
 import "./Menu.scss";
 
 const Menu = ({ cat }) => {
@@ -24,9 +25,20 @@ const Menu = ({ cat }) => {
       <h1 className="menu__title1">Other posts you may like</h1>
       {posts.map((post) => (
         <div className="menu__post" key={post.id}>
-          <img className="menu__image" src={post.img} alt="Content Image" />
+          <img
+            className="menu__image"
+            src={
+              post?.img
+                ? `../upload/${JSON.parse(post.img).filename}`
+                : "default-image.png"
+            }
+            alt="Content Image"
+          />
           <h2 className="menu__title">{post.title}</h2>
-          <button>Read More</button>
+
+          <Link to={`/post/${post.id}`}>
+            <button>Read More</button>
+          </Link>
         </div>
       ))}
     </div>
@@ -34,3 +46,4 @@ const Menu = ({ cat }) => {
 };
 
 export default Menu;
+

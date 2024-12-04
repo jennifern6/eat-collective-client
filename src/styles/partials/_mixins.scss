@@ -43,7 +43,7 @@
 
 //button
 @mixin button-style {
-  display: flex;
+  margin-top: 1rem;
   justify-content: space-between;
   background-color: $link;
   color: #fff;

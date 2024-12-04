@@ -9,24 +9,13 @@ import DOMPurify from "dompurify";
 
 const Write = () => {
   const state = useLocation().state;
-  const [value, setValue] = useState(state?.title || "");
-  const [title, setTitle] = useState(state?.desc || "");
+  const [value, setValue] = useState(state?.desc || "");
+  const [title, setTitle] = useState(state?.title || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
   const navigate = useNavigate();
 
-  // Function to extract plain text from HTML
-  const getText = (html) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  };
 
-  // Handle changes to the editor content
-  const handleQuillChange = (newValue) => {
-    setValue(newValue);
-    // Extract and set plain text as the title
-    setTitle(getText(newValue));
-  };
 
   const uploadImage = async () => {
     if (!file) return "";
@@ -89,7 +78,10 @@ const Write = () => {
           type="text"
           placeholder="Title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+          const sanitizedTitle = DOMPurify.sanitize(e.target.value);
+          setTitle(sanitizedTitle);
+        }}
         />
         <div className="editorContainer">
           <ReactQuill
@@ -117,9 +109,11 @@ const Write = () => {
             id="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
+          <button className="write__button-upload">
           <label htmlFor="file" className="upload-label">
             Upload Image
           </label>
+          </button>
           <div className="write__buttons">
             <button className="write__button">Save as Draft</button>
             <button onClick={handlePublish} className="write__button-publish">

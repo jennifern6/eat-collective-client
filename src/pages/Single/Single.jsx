@@ -46,7 +46,7 @@ const Single = () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/posts/${postId}`);
       alert("Post deleted successfully");
-      navigate('/'); // Navigate to home or another page
+      navigate("/"); // Navigate to home or another page
     } catch (err) {
       if (err.response?.status === 401) {
         alert("Not authenticated! Please log in.");
@@ -60,28 +60,49 @@ const Single = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // A simple loading state
+    return <div>Loading...</div>; 
   }
 
   return (
     <div className="single">
       <div className="single__content">
-        <img
-          className="single__content-image"
-          src={post?.img ? `../upload/${post.img}` : "default-image.png"}
-          alt={post?.title || "Post content"}
-        />
+        {/* DIV 1 - content image */}
+        <div className="single__main-image">
+          <img
+            className="single__content-image"
+            src={post?.img ? `../upload/${post.img}` : "default-image.png"}
+            alt={post?.title || "Post content"}
+          />
+        </div>
 
+        {/* DIV 2 - user info */}
         <div className="single__user-container">
           <div className="single__user">
-            {post?.userImg && (
-              <img src={post.userImg} alt={`${post?.username || "User"}'s avatar`} />
-            )}
-            <div className="single__info">
-              <span>{post?.username || "Unknown User"}</span>
-              <p>Posted {moment(post?.date).fromNow()}</p>
+            {/* Avatar */}
+            <div className="single__avatar">
+              {post?.userImg && (
+                <img
+                  className="user-avatar"
+                  src={
+                    post?.userImg
+                      ? `../upload/${JSON.parse(post.userImg).filename}`
+                      : "default-image.png"
+                  }
+                  alt={`${post?.username || "User"}'s avatar`}
+                />
+              )}
             </div>
 
+            {/* Name and Date */}
+            <div className="single__info">
+              <span><b>{post?.username || "Unknown User"}</b></span>
+              &nbsp;
+              <p>Posted {moment(post?.date).fromNow()}</p>
+            </div>
+          </div>
+
+          <div className="edit-delete-buttons">
+            {/* Edit/Delete options */}
             {currentUser?.username === post?.username && (
               <div className="single__edit">
                 <Link to={`/write?edit=2`} state={post}>
@@ -96,7 +117,10 @@ const Single = () => {
               </div>
             )}
           </div>
+        </div>
 
+        {/* DIV 3 - Title & Description */}
+        <div className="single__title-n-description">
           <h1 className="single__text">{post?.title || "Untitled Post"}</h1>
           <p
             className="single__description"
@@ -107,6 +131,7 @@ const Single = () => {
         </div>
       </div>
 
+      {/* DIV 4 - Related menu */}
       <div className="single__menu">
         <Menu cat={post?.cat || "default-category"} />
       </div>
