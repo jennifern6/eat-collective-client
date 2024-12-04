@@ -4,6 +4,8 @@
 .single {
     display: flex;
     gap: 3.125rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 
     &__content {
         display: flex;
@@ -19,6 +21,11 @@
             object-fit: cover;
         }
     }
+}
+
+.user-avatar{
+    width: 4rem; 
+    height: 4rem; 
 }
 
 
