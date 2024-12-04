@@ -82,7 +82,7 @@ const Single = () => {
             <div className="single__avatar">
               {post?.userImg && (
                 <img
-                  src={post.userImg}
+                  src={post?.userImg ? `../upload/${post.userImg}` : "default-image.png"}
                   alt={`${post?.username || "User"}'s avatar`}
                 />
               )}
