@@ -82,7 +82,7 @@ const Single = () => {
             <div className="single__avatar">
               {post?.userImg && (
                 <img
-                className="user-avatar"
+                  className="user-avatar"
                   src={
                     post?.userImg
                       ? `../upload/${JSON.parse(post.userImg).filename}`
@@ -100,20 +100,22 @@ const Single = () => {
             </div>
           </div>
 
-          {/* Edit/Delete options */}
-          {currentUser?.username === post?.username && (
-            <div className="single__edit">
-              <Link to={`/write?edit=2`} state={post}>
-                <img className="single__logo" src={Edit} alt="Edit Post" />
-              </Link>
-              <img
-                className="single__logo"
-                onClick={handleDelete}
-                src={Delete}
-                alt="Delete Post"
-              />
-            </div>
-          )}
+          <div className="edit-delete-buttons">
+            {/* Edit/Delete options */}
+            {currentUser?.username === post?.username && (
+              <div className="single__edit">
+                <Link to={`/write?edit=2`} state={post}>
+                  <img className="single__logo" src={Edit} alt="Edit Post" />
+                </Link>
+                <img
+                  className="single__logo"
+                  onClick={handleDelete}
+                  src={Delete}
+                  alt="Delete Post"
+                />
+              </div>
+            )}
+          </div>
         </div>
 
         {/* DIV 3 - Title & Description */}
