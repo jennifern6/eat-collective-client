@@ -25,6 +25,7 @@
 .single {
     &__user-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
         gap: 2rem;
     }
@@ -44,6 +45,13 @@
     &__info {
         display: flex;
         align-items: center;
+    }
+}
+
+.single {
+
+    &__edit {
+        display: flex;
     }
 }
 

@@ -23,7 +23,9 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/${postId}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/posts/${postId}`
+        );
         if (res.data.img) {
           try {
             const imgObj = JSON.parse(res.data.img);
@@ -46,7 +48,7 @@ const Single = () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/posts/${postId}`);
       alert("Post deleted successfully");
-      navigate('/'); // Navigate to home or another page
+      navigate("/"); // Navigate to home or another page
     } catch (err) {
       if (err.response?.status === 401) {
         alert("Not authenticated! Please log in.");
@@ -66,22 +68,43 @@ const Single = () => {
   return (
     <div className="single">
       <div className="single__content">
-        <img
-          className="single__content-image"
-          src={post?.img ? `../upload/${post.img}` : "default-image.png"}
-          alt={post?.title || "Post content"}
-        />
+
+
+        {/* DIV 1 - content image */}
+        <div className="single__main-image">
+          <img
+            className="single__content-image"
+            src={post?.img ? `../upload/${post.img}` : "default-image.png"}
+            alt={post?.title || "Post content"}
+          />
+        </div>
+
+
+
 
         <div className="single__user-container">
+          
+          
+          {/* DIV 2 - avatar */}
           <div className="single__user">
-            {post?.userImg && (
-              <img src={post.userImg} alt={`${post?.username || "User"}'s avatar`} />
-            )}
+            {/* DIV - avatar */}
+            <div className="single__avatar">
+              {post?.userImg && (
+                <img
+                  src={post.userImg}
+                  alt={`${post?.username || "User"}'s avatar`}
+                />
+              )}
+            </div>
+
+            {/* DIV - Name and Date  */}
             <div className="single__info">
               <span>{post?.username || "Unknown User"}</span>
               <p>Posted {moment(post?.date).fromNow()}</p>
             </div>
+            </div>
 
+            {/* DIV EDIT/DELETE LOGO  */}
             {currentUser?.username === post?.username && (
               <div className="single__edit">
                 <Link to={`/write?edit=2`} state={post}>
@@ -97,16 +120,24 @@ const Single = () => {
             )}
           </div>
 
-          <h1 className="single__text">{post?.title || "Untitled Post"}</h1>
-          <p
-            className="single__description"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(post?.desc || ""),
-            }}
-          ></p>
+
+
+
+
+          {/* DIV 3 - Title & Description  */}
+          <div className="single__title-n-description">
+            <h1 className="single__text">{post?.title || "Untitled Post"}</h1>
+            <p
+              className="single__description"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(post?.desc || ""),
+              }}
+            ></p>
+          </div>
         </div>
       </div>
 
+      {/* UNRELATED MENU  */}
       <div className="single__menu">
         <Menu cat={post?.cat || "default-category"} />
       </div>
