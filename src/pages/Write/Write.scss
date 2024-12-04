@@ -61,27 +61,26 @@
     
   }
 
-  &__button-publish {
-    background-color: $button;
-    margin-top: 1rem;
-
-    &__button-upload {
-      
+    &__button-publish {
+      background-color: $button;
+      margin-top: 1rem;
+  
+      &__button-upload {
         background-color: $button;
         white-space: nowrap;
         display: inline-block;
         text-align: center !important;
-        
-        
-      
-      &:hover {
-        background-color: $link;
+  
+  
+  
+        &:hover {
+          background-color: $link;
+        }
       }
     }
-  }
-
-input[type="radio"] {
-    accent-color: $link; 
-  }
   
-}
+    input[type="radio"] {
+      accent-color: $link;
+    }
+  
+    }
