@@ -23,9 +23,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/posts/${postId}`
-        );
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/${postId}`);
         if (res.data.img) {
           try {
             const imgObj = JSON.parse(res.data.img);
@@ -68,8 +66,6 @@ const Single = () => {
   return (
     <div className="single">
       <div className="single__content">
-
-
         {/* DIV 1 - content image */}
         <div className="single__main-image">
           <img
@@ -79,15 +75,10 @@ const Single = () => {
           />
         </div>
 
-
-
-
+        {/* DIV 2 - user info */}
         <div className="single__user-container">
-          
-          
-          {/* DIV 2 - avatar */}
           <div className="single__user">
-            {/* DIV - avatar */}
+            {/* Avatar */}
             <div className="single__avatar">
               {post?.userImg && (
                 <img
@@ -97,47 +88,42 @@ const Single = () => {
               )}
             </div>
 
-            {/* DIV - Name and Date  */}
+            {/* Name and Date */}
             <div className="single__info">
               <span>{post?.username || "Unknown User"}</span>
               <p>Posted {moment(post?.date).fromNow()}</p>
             </div>
+          </div>
+
+          {/* Edit/Delete options */}
+          {currentUser?.username === post?.username && (
+            <div className="single__edit">
+              <Link to={`/write?edit=2`} state={post}>
+                <img className="single__logo" src={Edit} alt="Edit Post" />
+              </Link>
+              <img
+                className="single__logo"
+                onClick={handleDelete}
+                src={Delete}
+                alt="Delete Post"
+              />
             </div>
+          )}
+        </div>
 
-            {/* DIV EDIT/DELETE LOGO  */}
-            {currentUser?.username === post?.username && (
-              <div className="single__edit">
-                <Link to={`/write?edit=2`} state={post}>
-                  <img className="single__logo" src={Edit} alt="Edit Post" />
-                </Link>
-                <img
-                  className="single__logo"
-                  onClick={handleDelete}
-                  src={Delete}
-                  alt="Delete Post"
-                />
-              </div>
-            )}
-          </div>
-
-
-
-
-
-          {/* DIV 3 - Title & Description  */}
-          <div className="single__title-n-description">
-            <h1 className="single__text">{post?.title || "Untitled Post"}</h1>
-            <p
-              className="single__description"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(post?.desc || ""),
-              }}
-            ></p>
-          </div>
+        {/* DIV 3 - Title & Description */}
+        <div className="single__title-n-description">
+          <h1 className="single__text">{post?.title || "Untitled Post"}</h1>
+          <p
+            className="single__description"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(post?.desc || ""),
+            }}
+          ></p>
         </div>
       </div>
 
-      {/* UNRELATED MENU  */}
+      {/* DIV 4 - Related menu */}
       <div className="single__menu">
         <Menu cat={post?.cat || "default-category"} />
       </div>
