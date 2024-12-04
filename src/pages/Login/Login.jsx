@@ -25,13 +25,23 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(inputs)
-      navigate("/");
+        await login(inputs); // Try logging in
+        navigate("/"); // Redirect to the home page on success
     } catch (err) {
-      setError(err.response.data);
-      
+        setError(err.response?.data); // Store the error response data
+
+        // Handle 404 status specifically
+        if (err.response?.status === 404) {
+            alert("User not found! Please create an account."); // Show an alert
+            navigate("/register"); // Redirect to the register page
+        } else if (err.response?.status === 400) {
+            alert("Wrong username or password!"); // Handle incorrect credentials
+        } else {
+            alert("An error occurred. Please try again later."); // Handle other errors
+        }
     }
-  };
+};
+
 
   return (
     <div className="auth">

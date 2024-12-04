@@ -78,7 +78,10 @@ const Write = () => {
           type="text"
           placeholder="Title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+          const sanitizedTitle = DOMPurify.sanitize(e.target.value);
+          setTitle(sanitizedTitle);
+        }}
         />
         <div className="editorContainer">
           <ReactQuill
