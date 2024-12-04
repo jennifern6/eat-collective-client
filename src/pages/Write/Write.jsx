@@ -109,9 +109,11 @@ const Write = () => {
             id="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
+          <button className="write__button-upload">
           <label htmlFor="file" className="upload-label">
             Upload Image
           </label>
+          </button>
           <div className="write__buttons">
             <button className="write__button">Save as Draft</button>
             <button onClick={handlePublish} className="write__button-publish">
