@@ -10,18 +10,22 @@
     &__content {
         display: flex;
         flex-direction: column;
+        
         flex: 5;
         padding: 1rem;
         border-radius: 0.5rem;
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
         &-image {
-            width: 75%;
+            margin-left:1.4rem;
+            width: 90%;
             height: auto;
             object-fit: cover;
+            text-align: center;
         }
     }
 }
+
 
 .user-avatar{
     width: 4rem; 
@@ -46,6 +50,7 @@
             height: 3rem;
             border-radius: 50%;
             object-fit: cover;
+            
         }
     }
 
