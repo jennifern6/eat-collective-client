@@ -3,9 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./Home.scss";
 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const cat = useLocation().search;
+
+  
 
   useEffect(() => {
     const fetchData = async () => {

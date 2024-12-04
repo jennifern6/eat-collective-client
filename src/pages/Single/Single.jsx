@@ -60,7 +60,7 @@ const Single = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // A simple loading state
+    return <div>Loading...</div>; 
   }
 
   return (
