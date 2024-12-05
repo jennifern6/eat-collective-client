@@ -42,12 +42,15 @@
         
   
         .post__image {
+          border-radius: 8px;
           // max-width: 37.5rem;
           // width: 90%;
           // height: auto;
           // display: block;
           // text-align: center;
           // margin-top: 1rem;
+          
+          
           width: 75%;
             height: auto;
             object-fit: cover;
