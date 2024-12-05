@@ -9,6 +9,7 @@ _This project consists of two repositories: a **Client (Frontend)** built with R
 ## ⚙️ Set Up
 
 **1. Clone the Repositories**
+
 Clone both the client and server repositories using the following commands:
 
 - **Client (Frontend)**:
@@ -23,6 +24,7 @@ Clone both the client and server repositories using the following commands:
   ```
 
 **Step 2: Navigate to Each Directory**
+
 After cloning, navigate to each directory:
 
 - **Client (Frontend)**:
@@ -37,6 +39,7 @@ After cloning, navigate to each directory:
   ```
 
 **Step 3: Install Dependencies**
+
 Install the required dependencies for both repositories:
 
 - **Client (Frontend)**:
@@ -51,6 +54,7 @@ Install the required dependencies for both repositories:
   ```
 
 **Step 4: Set Up the Backend (Server)**
+
 The backend uses Knex for database management. Follow these steps to set up the database:
 
 - **Run the migrations to set up the database schema:**
@@ -65,6 +69,7 @@ The backend uses Knex for database management. Follow these steps to set up the 
   ```
 
 **Step 5: Start the Development Servers**
+
 Start the development servers for both repositories:
 
 - **Client (Frontend)**:
@@ -77,8 +82,11 @@ Start the development servers for both repositories:
   ```bash
   npm run dev
   ```
-  **Step 6: Access the Application**
-  Start the development servers for both repositories:
+
+**Step 6: Access the Application**
+
+Start the development servers for both repositories:
+
 - Open the **Frontend** by visiting http://localhost:5173 in your browser
 - Ensure the **Backend** server is running on its configured port, http://localhost:8800
 
@@ -130,4 +138,4 @@ _Left image: Login page
 Right image: Register page_
 ![Categories: Login & Register](src/assets/images/6loginandregister.png)
 
-## 🥰 Have a great day!
+**🥰 Have a great day!**
