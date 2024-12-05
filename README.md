@@ -130,4 +130,4 @@ _Left image: Login page
 Right image: Register page_
 ![Categories: Login & Register](src/assets/images/6loginandregister.png)
 
-## 🥰 Have a great day!
+**🥰 Have a great day!**
